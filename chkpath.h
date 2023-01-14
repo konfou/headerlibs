@@ -72,6 +72,8 @@ char *which(const char *cmd)
     strcat(fname, cmd);
     if (access(fname, X_OK) == 0)
         return fname;
+
+    free(fname);
     return "";
 }
 
