@@ -52,14 +52,12 @@ void cat_unwrapped(const char *fname, ...)
 void cp(const char *source, const char *dest)
 {
     FILE *fsource, *fdest;
-    char c;
-    fsource = fopen_or_abort(source, "r");
-    fdest = fopen_or_abort(dest, "a");
-    c = fgetc(fsource);
-    while (c != EOF) {
-        fputc(c, fdest);
-        c = fgetc(fsource);
-    }
+    size_t n;
+    char buf[BUFSIZ];
+    fsource = fopen_or_abort(source, "rb");
+    fdest = fopen_or_abort(dest, "wb");
+    while ((n = fread(buf, 1, BUFSIZ, fsource)) > 0)
+        fwrite(buf, 1, n, fdest);
     fclose(fsource);
     fclose(fdest);
 }
