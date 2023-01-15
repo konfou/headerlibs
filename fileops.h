@@ -17,11 +17,12 @@ FILE *fopen_or_abort(const char *fname, const char *mode)
 }
 
 
-/* cat() - concatenate files and print on standard output
+/* cat_unwrapped() - concatenate files and print on standard output
  *
- * cat(char *file, ...)
+ * cat_unwrapped(char *file, ...)
  *
- * Concatenate FILE(s) to standard output.
+ * Concatenate FILE(s) to standard output. Requires NULL as last argument.
+ * The cat() macro is recommended instead that adds NULL by itself.
  */
 void cat_unwrapped(const char *fname, ...)
 {
