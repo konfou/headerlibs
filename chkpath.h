@@ -16,9 +16,9 @@ void *malloc_or_abort(size_t n)
 }
 
 
-/* which() - shows the full path of commands.
+/* which() - returns the full path of command
  *
- * which(char *command)
+ * char *which(char *command)
  *
  * It returns the full path of the executable that would have been
  * executed had `command` been entered at shell prompt that has
